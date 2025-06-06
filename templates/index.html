@@ -1,0 +1,29 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Finder Bot</title>
+</head>
+<body>
+    <h1>🔍 მოძებნე ვაკანსიები</h1>
+
+    <form method="post">
+        საკვანძო სიტყვები: 
+        <input name="keywords" placeholder="python,django,scraping" required>
+        <button type="submit">ძიება</button>
+    </form>
+
+    {% if jobs %}
+        <h2>🎯 ნაპოვნია {{ jobs|length }} ვაკანსია:</h2>
+        <ul>
+            {% for job in jobs %}
+                <li>
+                    <strong>{{ job.title }}</strong><br>
+                    <a href="{{ job.link }}" target="_blank">ნახვა</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
